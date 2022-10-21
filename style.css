@@ -1,7 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-
-
+    user-select: none;
     min-height: 1000px;
     height: auto;
     background: rgb(252,241,188);
@@ -46,4 +45,28 @@ input {
     display: block;
     width: 100%;
     height: 30px;
+}
+
+.box_button {
+    margin: 10px auto;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 3px;
+    background-color: #367867;
+    height: 35px;
+    width: 90px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #2a6253;
 }
