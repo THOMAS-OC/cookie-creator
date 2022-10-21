@@ -24,43 +24,47 @@ btnCreate.addEventListener("click", () => {
 btnView.addEventListener("click", () => {
 
     sectionCookies.innerHTML = ""
-    let listCookies = document.cookie.split(';');
 
-    // Liste optimisé pour l'affichage
-    let newList = []
+    if (document.cookie) {
+        let listCookies = document.cookie.split(';');
+
+        // Liste optimisé pour l'affichage
+        let newList = []
+        
+        // Suppression des espaces indésirables et ajout dans la liste pour affichage
+        for (let cookie of listCookies) {
+            if (cookie[0] == " ") {
+                cookie = cookie.slice(1,)
+                newList.push(cookie.split("="))
+            }
+            else {
+                newList.push(cookie.split("="))
+            }
+        }
     
-    // Suppression des espaces indésirables et ajout dans la liste pour affichage
-    for (let cookie of listCookies) {
-        if (cookie[0] == " ") {
-            cookie = cookie.slice(1,)
-            newList.push(cookie.split("="))
+        // Affichage
+        console.log(newList);
+        for (let cookie of newList) {
+            sectionCookies.innerHTML += `<article namecook="${cookie[0]}"> <p>nom : ${cookie[0]}</p> <p>valeur : ${cookie[1]}</p> <button namecook="${cookie[0]}">X</button> </article> `
         }
-        else {
-            newList.push(cookie.split("="))
+    
+        if (document.querySelector("section button")) {
+            btnDeleteCookies = document.querySelectorAll("section button")
         }
+    
+        // Gestion de la suppression de cookies
+    
+        btnDeleteCookies.forEach(element => {
+            element.addEventListener("click", () => {
+                let nameDeleteCookie = element.getAttribute("namecook")
+                console.log(nameDeleteCookie);
+                document.querySelector(`article[namecook="${nameDeleteCookie}"]`).remove();
+                //Supprime le cookie en lui passant une date d'expiration passée
+                document.cookie = `${nameDeleteCookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`; 
+            })
+        });
     }
-
-    // Affichage
-    console.log(newList);
-    for (let cookie of newList) {
-        sectionCookies.innerHTML += `<article namecook="${cookie[0]}"> <p>nom : ${cookie[0]}</p> <p>valeur : ${cookie[1]}</p> <button namecook="${cookie[0]}">X</button> </article> `
-    }
-
-    if (document.querySelector("section button")) {
-        btnDeleteCookies = document.querySelectorAll("section button")
-    }
-
-    // Gestion de la suppression de cookies
-
-    btnDeleteCookies.forEach(element => {
-        element.addEventListener("click", () => {
-            let nameDeleteCookie = element.getAttribute("namecook")
-            console.log(nameDeleteCookie);
-            document.querySelector(`article[namecook="${nameDeleteCookie}"]`).remove();
-            //Supprime le cookie en lui passant une date d'expiration passée
-            document.cookie = `${nameDeleteCookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`; 
-        })
-    });
+    
     
 })
 
