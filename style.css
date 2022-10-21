@@ -96,6 +96,11 @@ article p {
     margin-top: 10px;
 }
 
+article p:nth-child(2) {
+    height: 70px;
+    word-wrap: break-word;
+}
+
 article button {
     position: absolute;
     width: 30px;
