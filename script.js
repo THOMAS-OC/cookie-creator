@@ -43,7 +43,7 @@ btnView.addEventListener("click", () => {
     // Affichage
     console.log(newList);
     for (let cookie of newList) {
-        sectionCookies.innerHTML += `<article class=${cookie[0]}> <p>nom : ${cookie[0]}</p> <p>valeur : ${cookie[1]}</p> <button class=${cookie[0]}>X</button> </article> `
+        sectionCookies.innerHTML += `<article namecook="${cookie[0]}"> <p>nom : ${cookie[0]}</p> <p>valeur : ${cookie[1]}</p> <button namecook="${cookie[0]}">X</button> </article> `
     }
 
     if (document.querySelector("section button")) {
@@ -54,10 +54,11 @@ btnView.addEventListener("click", () => {
 
     btnDeleteCookies.forEach(element => {
         element.addEventListener("click", () => {
-            nameClass = element.className
-            document.querySelector(`article.${nameClass}`).remove()
+            let nameDeleteCookie = element.getAttribute("namecook")
+            console.log(nameDeleteCookie);
+            document.querySelector(`article[namecook="${nameDeleteCookie}"]`).remove();
             //Supprime le cookie en lui passant une date d'expiration passée
-            document.cookie = `${nameClass}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`; 
+            document.cookie = `${nameDeleteCookie}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`; 
         })
     });
     
