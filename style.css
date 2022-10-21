@@ -112,3 +112,9 @@ article button {
     color:white;
     cursor: pointer;
 }
+
+@media (max-width: 900px) {  
+    article {
+        width: 100%;
+    }
+}
