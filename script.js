@@ -41,7 +41,7 @@ btnView.addEventListener("click", () => {
 
     // Affichage
     for (let cookie of newList) {
-        sectionCookies.innerHTML += `<article> <p>nom = ${cookie[0]}</p> <p>valeur = ${cookie[1]}</p> <button>X</button> </article> `
+        sectionCookies.innerHTML += `<article class=${cookie[0]}> <p>nom = ${cookie[0]}</p> <p>valeur = ${cookie[1]}</p> <button class=${cookie[0]}>X</button> </article> `
     }
     
 })
