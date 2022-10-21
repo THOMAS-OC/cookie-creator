@@ -1,11 +1,12 @@
 let nameCookie = document.querySelector('input[name="name"]')
 let valueCookie = document.querySelector('input[name="value"]')
 
-
 const form = document.querySelector("form")
 const btnCreate = document.querySelector(".create")
 const btnView = document.querySelector(".view")
 const sectionCookies = document.querySelector("section")
+
+let btnDeleteCookies = document.querySelectorAll("section button")
 
 // Gestion du comportement natif du formulaire
 form.addEventListener("submit", (e) => {
@@ -43,7 +44,24 @@ btnView.addEventListener("click", () => {
     for (let cookie of newList) {
         sectionCookies.innerHTML += `<article class=${cookie[0]}> <p>nom = ${cookie[0]}</p> <p>valeur = ${cookie[1]}</p> <button class=${cookie[0]}>X</button> </article> `
     }
+
+    if (document.querySelector("section button")) {
+        btnDeleteCookies = document.querySelectorAll("section button")
+        console.log(btnDeleteCookies);
+    }
+
+    // Gestion de la suppression de cookies
+
+    btnDeleteCookies.forEach(element => {
+        element.addEventListener("click", () => {
+            nameClass = element.className
+            console.log(nameClass)
+            document.querySelector(`article.${nameClass}`).remove()
+            
+        })
+    });
     
 })
 
-// Gestion de la suppression de cookies
+
+
