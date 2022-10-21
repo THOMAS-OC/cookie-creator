@@ -12,11 +12,18 @@ form.addEventListener("submit", (e) => {
 })
 
 btnCreate.addEventListener("click", () => {
-    document.cookie = `${nameCookie.value}=${valueCookie.value}`; //Crée ou met à jour un cookie 'user'
+    document.cookie = `${nameCookie.value.trim()}=${valueCookie.value.trim()}`; //Crée ou met à jour un cookie 'user'
     nameCookie.value = ""
     valueCookie.value = ""
 })
 
 btnView.addEventListener("click", () => {
     alert(document.cookie)
+    let listCookies = document.cookie.split(';');
+    console.log(listCookies);
+    let newList = []
+    for (let cookie of listCookies) {
+        newList.push(cookie.split("="))
+    }
+    console.log(newList);
 })

@@ -23,7 +23,7 @@ h1 span {
 
 form {
     margin: 10px auto;
-    height: 500px;
+    height: 300px;
     width: 40vw;
     min-width: 300px;
 }
@@ -69,4 +69,22 @@ button {
 
 button:hover{
     background-color: #2a6253;
+}
+
+section {
+    margin: 0px auto;
+    width: 40vw;
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+article {
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 3px rgba(47, 47, 47, 0.773);
+    border-radius: 3px;
+    width: 45%;
+    height: 120px;
 }
