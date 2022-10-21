@@ -24,17 +24,26 @@ btnView.addEventListener("click", () => {
 
     sectionCookies.innerHTML = ""
     let listCookies = document.cookie.split(';');
-    let newList = []
 
+    // Liste optimisé pour l'affichage
+    let newList = []
+    
+    // Suppression des espaces indésirables et ajout dans la liste pour affichage
     for (let cookie of listCookies) {
-        newList.push(cookie.split("="))
+        if (cookie[0] == " ") {
+            cookie = cookie.slice(1,)
+            newList.push(cookie.split("="))
+        }
+        else {
+            newList.push(cookie.split("="))
+        }
     }
 
-    console.log(newList);
     // Affichage
     for (let cookie of newList) {
-        console.log(cookie);
         sectionCookies.innerHTML += `<article> <p>nom = ${cookie[0]}</p> <p>valeur = ${cookie[1]}</p> <button>X</button> </article> `
     }
     
 })
+
+// Gestion de la suppression de cookies
